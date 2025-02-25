@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useContext, useLayoutEffect } from 'react'
-import { CommandBarButton, IconButton, Dialog, DialogType, Stack } from '@fluentui/react'
+import { CommandBarButton, IconButton, Dialog, DialogType, Stack, Nav } from '@fluentui/react'
 import { SquareRegular, ShieldLockRegular, ErrorCircleRegular } from '@fluentui/react-icons'
 
 import ReactMarkdown from 'react-markdown'
@@ -65,6 +65,12 @@ const Chat = () => {
   const [errorMsg, setErrorMsg] = useState<ErrorMessage | null>()
   const [logo, setLogo] = useState('')
   const [answerId, setAnswerId] = useState<string>('')
+  const [chatID, setChatId] = useState<number>(1)
+
+  const indexes: Map<number, string> = new Map();
+
+  // ✅ Adding data
+  indexes.set(1, `sharepoint-index-rh`);
 
   const errorDialogContentProps = {
     type: DialogType.close,
@@ -82,6 +88,12 @@ const Chat = () => {
 
   const [ASSISTANT, TOOL, ERROR] = ['assistant', 'tool', 'error']
   const NO_CONTENT_ERROR = 'No content in messages object.'
+
+  const handleNavClick = (id: number, chatTitle: string | null, chatDescription: string | null) => {
+    setChatId(id);
+
+    newChat();
+  };
 
   useEffect(() => {
     if (
@@ -788,12 +800,57 @@ const Chat = () => {
         </Stack>
       ) : (
         <Stack horizontal className={styles.chatRoot}>
+          <Stack tokens={{ childrenGap: 4 }}>
+            {appStateContext?.state.isCosmosDBAvailable?.status !== CosmosDBStatus.NotConfigured && (
+              <CommandBarButton
+                role="button"
+                styles={{
+                  icon: {
+                    color: '#FFFFFF'
+                  },
+                  iconDisabled: {
+                    color: '#BDBDBD !important'
+                  },
+                  root: {
+                    color: '#FFFFFF',
+                    background:
+                      'radial-gradient(109.81% 107.82% at 100.1% 90.19%, #0F6CBD 33.63%, #2D87C3 70.31%, #8DDDD8 100%)'
+                  },
+                  rootDisabled: {
+                    background: '#F0F0F0'
+                  }
+                }}
+                className={styles.newChatIcon}
+                iconProps={{ iconName: 'Add' }}
+                onClick={newChat}
+                disabled={disabledButton()}
+                aria-label="start a new chat button"
+              />
+            )}
+            <Nav
+              selectedKey={chatID.toString()}
+              styles={{ root: { width: 200 } }}
+              groups={[
+                {
+                  links: [
+                    {
+                      key: "1",
+                      name: "Assistant RH",
+                      icon: "ChatBot",
+                      onClick: () => handleNavClick(1, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      url: ""
+                    }
+                  ],
+                },
+              ]}
+            />
+          </Stack>
           <div className={styles.chatContainer}>
             {!messages || messages.length < 1 ? (
               <Stack className={styles.chatEmptyState}>
                 <img src={logo} className={styles.chatIcon} aria-hidden="true" />
-                <h1 className={styles.chatEmptyStateTitle}>{ui?.chat_title}</h1>
-                <h2 className={styles.chatEmptyStateSubtitle}>{ui?.chat_description}</h2>
+                <h1 className={styles.chatEmptyStateTitle}>Commencer à discuter</h1>
+                <h2 className={styles.chatEmptyStateSubtitle}>Ce chat est configuré pour répondre à vos questions</h2>
               </Stack>
             ) : (
               <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? '40px' : '0px' }} role="log">
@@ -862,7 +919,7 @@ const Chat = () => {
                   onKeyDown={e => (e.key === 'Enter' || e.key === ' ' ? stopGenerating() : null)}>
                   <SquareRegular className={styles.stopGeneratingIcon} aria-hidden="true" />
                   <span className={styles.stopGeneratingText} aria-hidden="true">
-                    Stop generating
+                    arrêter la génération
                   </span>
                 </Stack>
               )}
@@ -933,7 +990,7 @@ const Chat = () => {
               </Stack>
               <QuestionInput
                 clearOnSend
-                placeholder="Type a new question..."
+                placeholder="Entrer une nouvelle question..."
                 disabled={isLoading}
                 onSend={(question, id) => {
                   appStateContext?.state.isCosmosDBAvailable?.cosmosDB

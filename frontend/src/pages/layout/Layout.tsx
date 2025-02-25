@@ -12,8 +12,8 @@ import styles from './Layout.module.css'
 const Layout = () => {
   const [isSharePanelOpen, setIsSharePanelOpen] = useState<boolean>(false)
   const [copyClicked, setCopyClicked] = useState<boolean>(false)
-  const [copyText, setCopyText] = useState<string>('Copy URL')
-  const [shareLabel, setShareLabel] = useState<string | undefined>('Share')
+  const [copyText, setCopyText] = useState<string>('Copier URL')
+  const [shareLabel, setShareLabel] = useState<string | undefined>('Partager')
   const [hideHistoryLabel, setHideHistoryLabel] = useState<string>('Hide chat history')
   const [showHistoryLabel, setShowHistoryLabel] = useState<string>('Show chat history')
   const [logo, setLogo] = useState('')
@@ -27,7 +27,7 @@ const Layout = () => {
   const handleSharePanelDismiss = () => {
     setIsSharePanelOpen(false)
     setCopyClicked(false)
-    setCopyText('Copy URL')
+    setCopyText('Copier URL')
   }
 
   const handleCopyClick = () => {
@@ -60,7 +60,7 @@ const Layout = () => {
         setHideHistoryLabel('Hide history')
         setShowHistoryLabel('Show history')
       } else {
-        setShareLabel('Share')
+        setShareLabel('Partager')
         setHideHistoryLabel('Hide chat history')
         setShowHistoryLabel('Show chat history')
       }
@@ -114,7 +114,7 @@ const Layout = () => {
           ]
         }}
         dialogContentProps={{
-          title: 'Share the web app',
+          title: "Partager l'application web",
           showCloseButton: true
         }}>
         <Stack horizontal verticalAlign="center" style={{ gap: '8px' }}>

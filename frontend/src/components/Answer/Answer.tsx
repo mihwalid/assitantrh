@@ -310,8 +310,8 @@ export const Answer = ({ answer, onCitationClicked, onExectResultClicked }: Prop
                     role="button">
                     <span>
                       {parsedAnswer.citations.length > 1
-                        ? parsedAnswer.citations.length + ' references'
-                        : '1 reference'}
+                        ? parsedAnswer.citations.length + ' références'
+                        : '1 référence'}
                     </span>
                   </Text>
                   <FontIcon
@@ -324,7 +324,7 @@ export const Answer = ({ answer, onCitationClicked, onExectResultClicked }: Prop
             </Stack.Item>
           )}
           <Stack.Item className={styles.answerDisclaimerContainer}>
-            <span className={styles.answerDisclaimer}>AI-generated content may be incorrect</span>
+            <span className={styles.answerDisclaimer}>Le contenu généré par IA peut être incorrect</span>
           </Stack.Item>
           {!!answer.exec_results?.length && (
             <Stack.Item onKeyDown={e => (e.key === 'Enter' || e.key === ' ' ? toggleIsRefAccordionOpen() : null)}>
