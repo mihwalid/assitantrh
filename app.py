@@ -68,11 +68,6 @@ async def index():
     )
 
 
-@bp.route("/favicon.ico")
-async def favicon():
-    return await bp.send_static_file("favicon.ico")
-
-
 @bp.route("/assets/<path:path>")
 async def assets(path):
     return await send_from_directory("static/assets", path)
@@ -881,5 +876,7 @@ async def generate_title(conversation_messages) -> str:
         logging.exception("Exception while generating title", e)
         return messages[-2]["content"]
 
-
+@bp.route("/LogoPVCP-blue.png")
+async def favicon():
+    return await bp.send_static_file("LogoPVCP-blue.png")
 app = create_app()

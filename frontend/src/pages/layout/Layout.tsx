@@ -4,12 +4,11 @@ import { Dialog, Stack, TextField } from '@fluentui/react'
 import { CopyRegular } from '@fluentui/react-icons'
 
 import { CosmosDBStatus } from '../../api'
-import Contoso from '../../assets/Contoso.svg'
+import Contoso from '../../assets/LogoPVCP-blue.png'
 import { HistoryButton, ShareButton } from '../../components/common/Button'
 import { AppStateContext } from '../../state/AppProvider'
 
 import styles from './Layout.module.css'
-
 const Layout = () => {
   const [isSharePanelOpen, setIsSharePanelOpen] = useState<boolean>(false)
   const [copyClicked, setCopyClicked] = useState<boolean>(false)
