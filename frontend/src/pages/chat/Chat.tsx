@@ -835,35 +835,35 @@ const Chat = () => {
                   links: [
                     {
                       key: "1",
-                      name: "RH",
+                      name: "Chat RH (Corpo)",
                       icon: "ChatBot",
                       onClick: () => handleNavClick(1, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
                       url: ""
                     },
-                    {
-                      key: "2",
-                      name: "PV RH",
-                      icon: "ChatBot",
-                      onClick: () => handleNavClick(2, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
-                      url: ""
-                    },
+                    // {
+                    //   key: "2",
+                    //   name: "Chat RH (PV)",
+                    //   icon: "ChatBot",
+                    //   onClick: () => handleNavClick(2, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                    //   url: ""
+                    // },
                     {
                       key: "3",
-                      name: "IT Service Desk",
+                      name: "Chat Support IT",
                       icon: "ChatBot",
                       onClick: () => handleNavClick(3, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
                       url: ""
                     },
                     {
                       key: "4",
-                      name: "IT Service SM",
+                      name: "Chat Support Polo",
                       icon: "ChatBot",
                       onClick: () => handleNavClick(4, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
                       url: ""
                     },
                     {
                       key: "5",
-                      name: "IT BO TNR",
+                      name: "Chat SAP",
                       icon: "ChatBot",
                       onClick: () => handleNavClick(5, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
                       url: ""
