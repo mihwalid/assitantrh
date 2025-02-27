@@ -355,6 +355,7 @@ const Chat = () => {
       }
       setMessages(request.messages)
     }
+    request.chatId = chatID.toString();
     let result = {} as ChatResponse
     var errorResponseMessage = 'Please try again. If the problem persists, please contact the site administrator.'
     try {
@@ -829,19 +830,46 @@ const Chat = () => {
             )}
             <Nav
               selectedKey={chatID.toString()}
-              styles={{ root: { width: 200 } }}
               groups={[
                 {
                   links: [
                     {
                       key: "1",
-                      name: "Assistant RH",
+                      name: "RH",
                       icon: "ChatBot",
                       onClick: () => handleNavClick(1, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
                       url: ""
+                    },
+                    {
+                      key: "2",
+                      name: "PV RH",
+                      icon: "ChatBot",
+                      onClick: () => handleNavClick(2, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      url: ""
+                    },
+                    {
+                      key: "3",
+                      name: "IT Service Desk",
+                      icon: "ChatBot",
+                      onClick: () => handleNavClick(3, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      url: ""
+                    },
+                    {
+                      key: "4",
+                      name: "IT Service SM",
+                      icon: "ChatBot",
+                      onClick: () => handleNavClick(4, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      url: ""
+                    },
+                    {
+                      key: "5",
+                      name: "IT BO TNR",
+                      icon: "ChatBot",
+                      onClick: () => handleNavClick(5, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      url: ""
                     }
                   ],
-                },
+                }
               ]}
             />
           </Stack>

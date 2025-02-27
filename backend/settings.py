@@ -20,6 +20,9 @@ from typing import List, Literal, Optional
 from typing_extensions import Self
 from quart import Request
 from backend.utils import parse_multi_columns, generateFilterString
+from dotenv import load_dotenv
+
+load_dotenv()
 
 DOTENV_PATH = os.environ.get(
     "DOTENV_PATH",
@@ -743,7 +746,17 @@ class _MongoDbSettings(BaseSettings, DatasourcePayloadConstructor):
             "type": self._type,
             "parameters": parameters
         }
-        
+
+class _SearchConfigSettings(BaseSettings):
+    model_config = {
+        "env_prefix": "INDEX_API_",  # Prefix for environment variables
+        "env_file": DOTENV_PATH,
+        "extra": "ignore",
+        "env_ignore_empty": True
+    }
+
+    config: object = Field(default={}, alias="config")
+      
         
 class _BaseSettings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -768,6 +781,7 @@ class _AppSettings(BaseModel):
     chat_history: Optional[_ChatHistorySettings] = None
     datasource: Optional[DatasourcePayloadConstructor] = None
     promptflow: Optional[_PromptflowSettings] = None
+    index_api_config: object = None
 
     @model_validator(mode="after")
     def set_promptflow_settings(self) -> Self:
@@ -792,6 +806,7 @@ class _AppSettings(BaseModel):
     @model_validator(mode="after")
     def set_datasource_settings(self) -> Self:
         try:
+            self.index_api_config = json.loads(os.getenv("INDEX_API_CONFIG", "{}"))
             if self.base_settings.datasource_type == "AzureCognitiveSearch":
                 self.datasource = _AzureSearchSettings(settings=self, _env_file=DOTENV_PATH)
                 logging.debug("Using Azure Cognitive Search")

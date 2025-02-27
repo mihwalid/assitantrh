@@ -85,7 +85,8 @@ export type ChatResponse = {
 }
 
 export type ConversationRequest = {
-  messages: ChatMessage[]
+  messages: ChatMessage[],
+  chatId?: string
 }
 
 export type UserInfo = {

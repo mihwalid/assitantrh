@@ -1,0 +1,32 @@
+{
+    "1": {
+        "search_index": "rh",
+        "embedding_name": "ada",
+        "embedding_endpoint": "",
+        "embedding_key": ""
+    },
+    "2": {
+        "search_index": "",
+        "embedding_name": "",
+        "embedding_endpoint": "",
+        "embedding_key": ""
+    },
+    "3": {
+        "search_index": "it-service-desk",
+        "embedding_name": "ada",
+        "embedding_endpoint": "",
+        "embedding_key": ""
+    },
+    "4": {
+        "search_index": "it-service-sm",
+        "embedding_name": "ada",
+        "embedding_endpoint": "",
+        "embedding_key": ""
+    },
+    "5": {
+        "search_index": "it-bo-tnr",
+        "embedding_name": "ada",
+        "embedding_endpoint": "",
+        "embedding_key": ""
+    }
+}

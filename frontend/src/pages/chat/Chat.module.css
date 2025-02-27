@@ -5,6 +5,10 @@
   gap: 20px;
 }
 
+.groupContent-111 {
+  margin-bottom: 0 !important;
+}
+
 .chatRoot {
   flex: 1;
   display: flex;
@@ -192,6 +196,7 @@
   height: 40px;
   color: #ffffff;
   border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .stopGeneratingContainer {

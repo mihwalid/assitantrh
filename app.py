@@ -257,6 +257,10 @@ def prepare_model_args(request_body, request_headers):
                 )
             ]
         }
+    chatId = request_body.get("chatId", "0")
+    index_settings = app_settings.index_api_config[chatId]
+    model_args["extra_body"]["data_sources"][0]["parameters"]["index_name"] = index_settings["search_index"]
+    model_args["extra_body"]["data_sources"][0]["parameters"]["embedding_dependency"]["deployment_name"] = index_settings["embedding_name"]
 
     model_args_clean = copy.deepcopy(model_args)
     if model_args_clean.get("extra_body"):
