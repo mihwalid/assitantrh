@@ -25,7 +25,7 @@ import { AppStateContext } from '../../state/AppProvider'
 import ChatHistoryList from './ChatHistoryList'
 
 import styles from './ChatHistoryPanel.module.css'
-
+import { useTranslation } from 'react-i18next'
 interface ChatHistoryPanelProps {}
 
 export enum ChatHistoryPanelTabs {
@@ -49,7 +49,7 @@ export function ChatHistoryPanel(_props: ChatHistoryPanelProps) {
   const [hideClearAllDialog, { toggle: toggleClearAllDialog }] = useBoolean(true)
   const [clearing, setClearing] = React.useState(false)
   const [clearingError, setClearingError] = React.useState(false)
-
+  const { t, i18n } = useTranslation();
   const clearAllDialogContentProps = {
     type: DialogType.close,
     title: !clearingError ? 'Are you sure you want to clear all chat history?' : 'Error deleting all of chat history',

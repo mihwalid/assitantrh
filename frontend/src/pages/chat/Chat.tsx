@@ -38,6 +38,7 @@ import { QuestionInput } from "../../components/QuestionInput";
 import { ChatHistoryPanel } from "../../components/ChatHistory/ChatHistoryPanel";
 import { AppStateContext } from "../../state/AppProvider";
 import { useBoolean } from "@fluentui/react-hooks";
+import { useTranslation } from 'react-i18next';
 
 const enum messageStatus {
   NotRunning = 'Not Running',
@@ -65,6 +66,7 @@ const Chat = () => {
   const [errorMsg, setErrorMsg] = useState<ErrorMessage | null>()
   const [logo, setLogo] = useState('')
   const [answerId, setAnswerId] = useState<string>('')
+  const { t, i18n } = useTranslation();  
   const [chatID, setChatId] = useState<number>(1)
 
   const indexes: Map<number, string> = new Map();
@@ -232,21 +234,8 @@ const Chat = () => {
     setMessages(conversation.messages)
 
     const request: ConversationRequest = {
-      messages: [...conversation.messages.filter(answer => answer.role !== ERROR)],
-      chatId: chatID // Add chatID to the request
+      messages: [...conversation.messages.filter(answer => answer.role !== ERROR)]
     }
-    const prompt = prompts.get(chatID? chatID: 1);
-    
-    const systemMessage: ChatMessage = {
-      id: uuid(),
-      role: 'system',
-      content: prompt as string,
-      date: new Date().toISOString()
-    }
-
-    request.messages.push(systemMessage);
-
-    console.log("request : " + request);    
 
     let result = {} as ChatResponse
     try {
@@ -853,13 +842,13 @@ const Chat = () => {
                       onClick: () => handleNavClick(1, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
                       url: ""
                     },
-                    // {
-                    //   key: "2",
-                    //   name: "Chat RH (PV)",
-                    //   icon: "ChatBot",
-                    //   onClick: () => handleNavClick(2, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
-                    //   url: ""
-                    // },
+                    {
+                      key: "2",
+                      name: "Chat RH (PV)",
+                      icon: "ChatBot",
+                      onClick: () => handleNavClick(2, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      url: ""
+                    },
                     {
                       key: "3",
                       name: "Chat Support IT",

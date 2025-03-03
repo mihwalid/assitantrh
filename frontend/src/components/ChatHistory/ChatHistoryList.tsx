@@ -5,7 +5,7 @@ import { Conversation } from '../../api/models'
 import { AppStateContext } from '../../state/AppProvider'
 
 import { ChatHistoryListItemGroups } from './ChatHistoryListItem'
-
+import { useTranslation } from 'react-i18next'
 interface ChatHistoryListProps {}
 
 export interface GroupedChatHistory {

@@ -15,6 +15,7 @@ import { AppStateContext } from '../../state/AppProvider'
 import { parseAnswer } from './AnswerParser'
 
 import styles from './Answer.module.css'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   answer: AskResponse

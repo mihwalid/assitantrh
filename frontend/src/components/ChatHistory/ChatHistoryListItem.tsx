@@ -23,7 +23,7 @@ import { Conversation } from '../../api/models'
 import { AppStateContext } from '../../state/AppProvider'
 
 import { GroupedChatHistory } from './ChatHistoryList'
-
+import { useTranslation } from 'react-i18next'
 import styles from './ChatHistoryPanel.module.css'
 
 interface ChatHistoryListItemCellProps {
