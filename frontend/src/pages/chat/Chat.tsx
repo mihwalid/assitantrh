@@ -232,8 +232,21 @@ const Chat = () => {
     setMessages(conversation.messages)
 
     const request: ConversationRequest = {
-      messages: [...conversation.messages.filter(answer => answer.role !== ERROR)]
+      messages: [...conversation.messages.filter(answer => answer.role !== ERROR)],
+      chatId: chatID // Add chatID to the request
     }
+    const prompt = prompts.get(chatID? chatID: 1);
+    
+    const systemMessage: ChatMessage = {
+      id: uuid(),
+      role: 'system',
+      content: prompt as string,
+      date: new Date().toISOString()
+    }
+
+    request.messages.push(systemMessage);
+
+    console.log("request : " + request);    
 
     let result = {} as ChatResponse
     try {
