@@ -77,8 +77,8 @@ const Layout = () => {
   return (
     <div className={styles.layout}>
       <header className={styles.header} role={'banner'}>
-        <Stack horizontal verticalAlign="center" horizontalAlign="space-between">
-          <Stack horizontal verticalAlign="center">
+        <Stack horizontal verticalAlign="center" horizontalAlign="center" className={styles.headerContainer}>
+          <Stack horizontal verticalAlign="center" className={styles.headerTitleContainer}>
             <img src={logo} className={styles.headerIcon} aria-hidden="true" alt="" />
             <Link to="/" className={styles.headerTitleContainer}>
               <h1 className={styles.headerTitle}>{ui?.title}</h1>

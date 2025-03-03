@@ -10,14 +10,16 @@
 
 .headerContainer {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
 }
 
 .headerTitleContainer {
   display: flex;
   align-items: center;
-  margin-left: 14px;
+  justify-content: center;
+  width: 100%; 
+  text-align: center; 
   text-decoration: none;
 }
 
@@ -32,7 +34,7 @@
 }
 
 .headerIcon {
-  height: 32px;
+  height: 48px;
   width: auto;
   margin-left: 36px;
 }
