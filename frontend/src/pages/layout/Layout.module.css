@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Gill+Sans:wght@700&display=swap');
+
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -6,6 +9,8 @@
 
 .header {
   background-color: #f2f2f2;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .headerContainer {
@@ -24,13 +29,16 @@
 }
 
 .headerTitle {
+  position: absolute;
+  left: 50%;
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 28px;
   display: flex;
   align-items: flex-end;
   color: #242424;
+
 }
 
 .headerIcon {
