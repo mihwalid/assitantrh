@@ -5,7 +5,7 @@ include:
     inputs:
       environment: test
       env_short: tst
-      tags: ["azure", "docker", "iac"]
+      tags: ["genia", "shell"]
       ressource_group: rg-tst-weu-chatbot-sp-01
       webapp_name: ChatBotsApp
       webapp_slot_name: test
