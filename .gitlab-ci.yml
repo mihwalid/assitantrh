@@ -1,0 +1,11 @@
+include:
+  - project: corporate/projet/genia/ci-templates
+    ref: main
+    file: .gitlab-ci.terraform.projet.yml
+    inputs:
+      environment: test
+      env_short: tst
+      tags: ["azure", "docker", "iac"]
+      ressource_group: rg-tst-weu-chatbot-sp-01
+      webapp_name: ChatBotsApp
+      webapp_slot_name: test
