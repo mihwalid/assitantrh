@@ -1,7 +1,7 @@
 include:
   - project: corporate/projet/genia/ci-templates
     ref: main
-    file: .gitlab-ci.terraform.projet.yml
+    file: .gitlab-ci.genai.projet.yml
     inputs:
       environment: test
       env_short: tst
