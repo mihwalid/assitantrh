@@ -431,6 +431,7 @@ async def add_conversation():
     ## check request for conversation_id
     request_json = await request.get_json()
     conversation_id = request_json.get("conversation_id", None)
+    chat_name = request_json.get("chat_name", "")
 
     try:
         # make sure cosmos is configured
@@ -442,7 +443,7 @@ async def add_conversation():
         if not conversation_id:
             title = await generate_title(request_json["messages"])
             conversation_dict = await current_app.cosmos_conversation_client.create_conversation(
-                user_id=user_id, title=title
+                user_id=user_id, title=title, chat_name=chat_name
             )
             conversation_id = conversation_dict["id"]
             history_metadata["title"] = title

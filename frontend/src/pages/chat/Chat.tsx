@@ -74,6 +74,14 @@ const Chat = () => {
   // ✅ Adding data
   indexes.set(1, `sharepoint-index-rh`);
 
+  const chatsName :  Map<number, string> = new Map();
+
+  chatsName.set(1, "Chat RH (Corpo)");
+  chatsName.set(2, "Chat RH (PV)");
+  chatsName.set(3, "Chat Support IT");
+  chatsName.set(4, "Chat Support Polo");
+  chatsName.set(5, "Chat SAP");
+
   const errorDialogContentProps = {
     type: DialogType.close,
     title: errorMsg?.title,
@@ -361,9 +369,10 @@ const Chat = () => {
     let result = {} as ChatResponse
     var errorResponseMessage = 'Please try again. If the problem persists, please contact the site administrator.'
     try {
+      const chatName = chatsName.get(chatID ?? 1);
       const response = conversationId
-        ? await historyGenerate(request, abortController.signal, conversationId)
-        : await historyGenerate(request, abortController.signal)
+        ? await historyGenerate(request, abortController.signal, chatName, conversationId)
+        : await historyGenerate(request, abortController.signal, chatName)
       if (!response?.ok) {
         const responseJson = await response.json()
         errorResponseMessage =

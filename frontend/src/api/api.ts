@@ -115,21 +115,20 @@ export const historyRead = async (convId: string): Promise<ChatMessage[]> => {
 export const historyGenerate = async (
   options: ConversationRequest,
   abortSignal: AbortSignal,
+  chatName?: string,
   convId?: string
 ): Promise<Response> => {
-  let body
-  if (convId) {
-    body = JSON.stringify({
-      conversation_id: convId,
-      messages: options.messages,
-      chatId: options.chatId
-    })
-  } else {
-    body = JSON.stringify({
-      messages: options.messages,
-      chatId: options.chatId
-    })
+  let bodyObject = {
+    messages: options.messages
   }
+  bodyObject = {
+    ...bodyObject,
+    ...{chatId: options.chatId},
+    ...(convId && { conversation_id: convId }),
+    ...(chatName && { chat_name: chatName })
+  };
+  let body = JSON.stringify(bodyObject);
+
   const response = await fetch('/history/generate', {
     method: 'POST',
     headers: {
