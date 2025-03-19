@@ -23,6 +23,7 @@
 }
 
 .historyButtonRoot {
+  display: none;
   width: 180px;
   border: 1px solid #d1d1d1;
 }
