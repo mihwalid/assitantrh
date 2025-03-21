@@ -46,6 +46,7 @@ export const Answer = ({ answer, onCitationClicked, onExectResultClicked }: Prop
     appStateContext?.state.frontendSettings?.feedback_enabled && appStateContext?.state.isCosmosDBAvailable?.cosmosDB
   const SANITIZE_ANSWER = appStateContext?.state.frontendSettings?.sanitize_answer
 
+  const { t, i18n } = useTranslation();
   const handleChevronClick = () => {
     setChevronIsExpanded(!chevronIsExpanded)
     toggleIsRefAccordionOpen()
@@ -325,7 +326,7 @@ export const Answer = ({ answer, onCitationClicked, onExectResultClicked }: Prop
             </Stack.Item>
           )}
           <Stack.Item className={styles.answerDisclaimerContainer}>
-            <span className={styles.answerDisclaimer}>Le contenu généré par IA peut être incorrect</span>
+          <span className={styles.answerDisclaimer}>{t("warningMessageAIContent")}</span>
           </Stack.Item>
           {!!answer.exec_results?.length && (
             <Stack.Item onKeyDown={e => (e.key === 'Enter' || e.key === ' ' ? toggleIsRefAccordionOpen() : null)}>

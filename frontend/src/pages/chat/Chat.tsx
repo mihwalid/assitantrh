@@ -67,6 +67,9 @@ const Chat = () => {
   const [logo, setLogo] = useState('')
   const [answerId, setAnswerId] = useState<string>('')
   const { t, i18n } = useTranslation();  
+  const [chatTitle, setChatTitle] = useState<string | null>(t("chat.mainTitle"))
+  const [chatDescription, setChatDescription] = useState<string | null>(t("chat.message"))
+
   const [chatID, setChatId] = useState<number>(1)
 
   const indexes: Map<number, string> = new Map();
@@ -101,7 +104,8 @@ const Chat = () => {
 
   const handleNavClick = (id: number, chatTitle: string | null, chatDescription: string | null) => {
     setChatId(id);
-
+    setChatTitle(chatTitle);
+    setChatDescription(chatDescription);
     newChat();
   };
 
@@ -846,37 +850,37 @@ const Chat = () => {
                   links: [
                     {
                       key: "1",
-                      name: "Chat RH (Corpo)",
-                      icon: "ChatBot",
-                      onClick: () => handleNavClick(1, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      name: "Chat RH (PV)",
+                      icon: "Comment",
+                      onClick: () => handleNavClick(1, t("chat.mainTitle"), t("chat.message")), 
                       url: ""
                     },
                     {
                       key: "2",
-                      name: "Chat RH (PV)",
-                      icon: "ChatBot",
-                      onClick: () => handleNavClick(2, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      name: "Chat RH (Corpo)",
+                      icon: "Comment",
+                      onClick: () => handleNavClick(2, t("chat.mainTitle"), t("chat.message")),  
                       url: ""
                     },
                     {
                       key: "3",
                       name: "Chat Support IT",
-                      icon: "ChatBot",
-                      onClick: () => handleNavClick(3, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      icon: "Info",
+                      onClick: () => handleNavClick(3, t("chat.mainTitle"), t("chat.message")), 
                       url: ""
                     },
                     {
                       key: "4",
                       name: "Chat Support Polo",
-                      icon: "ChatBot",
-                      onClick: () => handleNavClick(4, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      icon: "CommentSolid",
+                      onClick: () => handleNavClick(4, t("chat.mainTitle"), t("chat.message")),  
                       url: ""
                     },
                     {
                       key: "5",
                       name: "Chat SAP",
                       icon: "ChatBot",
-                      onClick: () => handleNavClick(5, "Commencer à discuter", "Ce chat est configuré pour répondre à vos questions"), 
+                      onClick: () => handleNavClick(5, t("chat.mainTitle"), t("chat.message")), 
                       url: ""
                     }
                   ],
@@ -888,8 +892,8 @@ const Chat = () => {
             {!messages || messages.length < 1 ? (
               <Stack className={styles.chatEmptyState}>
                 <img src={logo} className={styles.chatIcon} aria-hidden="true" />
-                <h1 className={styles.chatEmptyStateTitle}>Commencer à discuter</h1>
-                <h2 className={styles.chatEmptyStateSubtitle}>Ce chat est configuré pour répondre à vos questions</h2>
+                <h1 className={styles.chatEmptyStateTitle}>{chatTitle}</h1>
+                <h2 className={styles.chatEmptyStateSubtitle}>{chatDescription}</h2>
               </Stack>
             ) : (
               <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? '40px' : '0px' }} role="log">
@@ -932,7 +936,7 @@ const Chat = () => {
                     <div className={styles.chatMessageGpt}>
                       <Answer
                         answer={{
-                          answer: "Génération de la réponse...",
+                          answer: `${t("generatingAnswer")}...`,
                           citations: [],
                           generated_chart: null
                         }}
@@ -958,7 +962,7 @@ const Chat = () => {
                   onKeyDown={e => (e.key === 'Enter' || e.key === ' ' ? stopGenerating() : null)}>
                   <SquareRegular className={styles.stopGeneratingIcon} aria-hidden="true" />
                   <span className={styles.stopGeneratingText} aria-hidden="true">
-                    Arrêter la génération
+                  {t("stopGenerating")}
                   </span>
                 </Stack>
               )}
@@ -1003,7 +1007,7 @@ const Chat = () => {
               </Stack>
               <QuestionInput
                 clearOnSend
-                placeholder="Entrer une nouvelle question..."
+                placeholder={`${t("newQuestion")}...`}
                 disabled={isLoading}
                 onSend={(question, id) => {
                   appStateContext?.state.isCosmosDBAvailable?.cosmosDB
