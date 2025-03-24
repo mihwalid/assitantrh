@@ -11,7 +11,11 @@ const resources = {
     translation: {
       "newQuestion": "Type a new question",
       "chat": {
-          "mainTitle": "Start chatting",
+        "mainTitlerhpv": "Start chatting with the HR Pierre & Vacances chatbot",
+        "mainTitlerhcorpo": "Start chatting with the Corporate HR chatbot",
+        "mainTitleit": "Start chatting with the IT Support chatbot",
+        "mainTitlepolo": "Start chatting with the Polo Support chatbot",
+        "mainTitlesap": "Start chatting with the SAP chatbot",
           "message": "This chatbot is configured to answer your questions"
       },
       "displayChatHistory": "Show chat history",
@@ -58,7 +62,11 @@ const resources = {
     translation: {
       "newQuestion": "Tapez une nouvelle question",
       "chat": {
-        "mainTitle": "Commencez à discuter",
+        "mainTitle": "Commencez à discuter avec le chatbot RH Pierre & Vacances",
+        "mainTitlerhcorpo": "Commencez à discuter avec le chatbot - RH Corporate",
+        "mainTitleit": "Commencez à discuter avec le chatbot Support Infomatique",
+        "mainTitlepolo": "Commencez à discuter avec le chatbot Support Polo",
+        "mainTitlesap": "Commencez à discuter avec le chatbot SAP",
         "message": "Ce chatbot est configuré pour répondre à vos questions"
       },
       "displayChatHistory": "Afficher l'historique de chat",
@@ -105,7 +113,11 @@ const resources = {
     translation: {
       "newQuestion": "Escribe una nueva pregunta",
       "chat": {
-        "mainTitle": "Empieza a chatear",
+        "mainTitle": "Comience a chatear con el chatbot de RRHH de Pierre & Vacances",
+        "mainTitlerhcorpo": "Comience a chatear con el chatbot de RRHH Corporativo",
+        "mainTitleit": "Comience a chatear con el chatbot de Soporte Informático",
+        "mainTitlepolo": "Comience a chatear con el chatbot de Soporte Polo",
+        "mainTitlesap": "Comience a chatear con el chatbot de SAP",
         "message": "Este chatbot está configurado para responder tus preguntas"
       },
       "displayChatHistory": "Mostrar historial de chat",
@@ -152,7 +164,11 @@ const resources = {
     translation: {
       "newQuestion": "Gib eine neue Frage ein",
       "chat": {
-        "mainTitle": "Beginne zu chatten",
+        "mainTitle": "Beginnen Sie den Chat mit dem HR-Chatbot von Pierre & Vacances",
+        "mainTitlerhcorpo": "Beginnen Sie den Chat mit dem Corporate HR-Chatbot",
+        "mainTitleit": "Beginnen Sie den Chat mit dem IT-Support-Chatbot",
+        "mainTitlepolo": "Beginnen Sie den Chat mit dem Polo-Support-Chatbot",
+        "mainTitlesap": "Beginnen Sie den Chat mit dem SAP-Chatbot",
         "message": "Dieser Chatbot ist darauf eingestellt, deine Fragen zu beantworten"
       },
       "displayChatHistory": "Chatverlauf anzeigen",
@@ -199,7 +215,11 @@ const resources = {
     translation: {
       "newQuestion": "Typ een nieuwe vraag",
       "chat": {
-        "mainTitle": "Begin met chatten",
+        "mainTitle": "Begin met chatten met de HR-chatbot van Pierre & Vacances",
+        "mainTitlerhcorpo": "Begin met chatten met de Corporate HR-chatbot",
+        "mainTitleit": "Begin met chatten met de IT-supportchatbot",
+        "mainTitlepolo": "Begin met chatten met de Polo-supportchatbot",
+        "mainTitlesap": "Begin met chatten met de SAP-chatbot",
         "message": "Deze chatbot is ingesteld om je vragen te beantwoorden"
       },
       "displayChatHistory": "Toon chatgeschiedenis",

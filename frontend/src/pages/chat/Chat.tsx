@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect, useContext, useLayoutEffect } from 'react'
 import { CommandBarButton, IconButton, Dialog, DialogType, Stack, Nav } from '@fluentui/react'
 import { SquareRegular, ShieldLockRegular, ErrorCircleRegular } from '@fluentui/react-icons'
-
+import UserProfile from '../../components/UserProfile/UserProfile'; 
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
@@ -852,35 +852,36 @@ const Chat = () => {
                       key: "1",
                       name: "Chat RH (PV)",
                       icon: "Comment",
-                      onClick: () => handleNavClick(1, t("chat.mainTitle"), t("chat.message")), 
+                      onClick: () => handleNavClick(1, t("chat.mainTitle"), t("chat.message")),
+
                       url: ""
                     },
                     {
                       key: "2",
                       name: "Chat RH (Corpo)",
                       icon: "Comment",
-                      onClick: () => handleNavClick(2, t("chat.mainTitle"), t("chat.message")),  
+                      onClick: () => handleNavClick(1, t("chat.mainTitlerhcorpo"), t("chat.message")),
                       url: ""
                     },
                     {
                       key: "3",
                       name: "Chat Support IT",
-                      icon: "Info",
-                      onClick: () => handleNavClick(3, t("chat.mainTitle"), t("chat.message")), 
+                      icon: "Comment",
+                      onClick: () => handleNavClick(1, t("chat.mainTitleit"), t("chat.message")),
                       url: ""
                     },
                     {
                       key: "4",
                       name: "Chat Support Polo",
-                      icon: "CommentSolid",
-                      onClick: () => handleNavClick(4, t("chat.mainTitle"), t("chat.message")),  
+                      icon: "Comment",
+                      onClick: () => handleNavClick(1, t("chat.mainTitlepolo"), t("chat.message")), 
                       url: ""
                     },
                     {
                       key: "5",
                       name: "Chat SAP",
-                      icon: "ChatBot",
-                      onClick: () => handleNavClick(5, t("chat.mainTitle"), t("chat.message")), 
+                      icon: "Comment",
+                      onClick: () => handleNavClick(1, t("chat.mainTitlesap"), t("chat.message")),
                       url: ""
                     }
                   ],
@@ -966,7 +967,7 @@ const Chat = () => {
                   </span>
                 </Stack>
               )}
-              <Stack>
+              {/* <Stack>
                 <CommandBarButton
                   role="button"
                   styles={{
@@ -1004,7 +1005,7 @@ const Chat = () => {
                   onDismiss={handleErrorDialogClose}
                   dialogContentProps={errorDialogContentProps}
                   modalProps={modalProps}></Dialog>
-              </Stack>
+              </Stack> */}
               <QuestionInput
                 clearOnSend
                 placeholder={`${t("newQuestion")}...`}
