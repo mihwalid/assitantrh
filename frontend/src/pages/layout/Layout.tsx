@@ -14,10 +14,11 @@ const Layout = () => {
   const { t, i18n } = useTranslation();  
   const [isSharePanelOpen, setIsSharePanelOpen] = useState<boolean>(false)
   const [copyClicked, setCopyClicked] = useState<boolean>(false)
-  const [copyText, setCopyText] = useState<string>('Copier URL')
-  const [shareLabel, setShareLabel] = useState<string | undefined>('Partager')
-  const [hideHistoryLabel, setHideHistoryLabel] = useState<string>('Hide chat history')
-  const [showHistoryLabel, setShowHistoryLabel] = useState<string>("Afficher l'historique")
+  const [copyText, setCopyText] = useState<string>(t("copyUrl") ?? "Copy URL")
+  const [shareLabel, setShareLabel] = useState<string | undefined>(t("share") ?? "Share")
+  const [hideHistoryLabel, setHideHistoryLabel] = useState<string>(t("hideChatHistory") ?? "Hide chat history")
+  const [showHistoryLabel, setShowHistoryLabel] = useState<string>(t("displayChatHistory") ?? "Show chat history")
+
   const [logo, setLogo] = useState('')
   const appStateContext = useContext(AppStateContext)
   const ui = appStateContext?.state.frontendSettings?.ui
@@ -29,7 +30,7 @@ const Layout = () => {
   const handleSharePanelDismiss = () => {
     setIsSharePanelOpen(false)
     setCopyClicked(false)
-    setCopyText('Copier URL')
+    setCopyText(t("copyUrl") ?? "")
   }
 
   const handleCopyClick = () => {
@@ -49,7 +50,7 @@ const Layout = () => {
 
   useEffect(() => {
     if (copyClicked) {
-      setCopyText('Copied URL')
+      setCopyText(t('copiedUrl') ?? "")
     }
   }, [copyClicked])
 
@@ -59,12 +60,13 @@ const Layout = () => {
     const handleResize = () => {
       if (window.innerWidth < 480) {
         setShareLabel(undefined)
-        setHideHistoryLabel('Hide history')
-        setShowHistoryLabel('Show history')
+        setHideHistoryLabel(t("hideChatHistory") as string)
+        setShowHistoryLabel(t("displayChatHistory") as string)
       } else {
-        setShareLabel('Partager')
-        setHideHistoryLabel('Hide chat history')
-        setShowHistoryLabel('Show chat history')
+        setShareLabel(t("share") ?? "Share")
+        setHideHistoryLabel(t("hideChatHistory") as string)
+        setShowHistoryLabel(t("displayChatHistory") as string)
+
       }
     }
 
@@ -116,7 +118,7 @@ const Layout = () => {
           ]
         }}
         dialogContentProps={{
-          title: "Partager l'application web",
+          title: t("shareWebApp") ?? "Share the web app",
           showCloseButton: true
         }}>
         <Stack horizontal verticalAlign="center" style={{ gap: '8px' }}>

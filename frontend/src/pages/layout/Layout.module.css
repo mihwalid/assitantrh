@@ -5,9 +5,9 @@
 }
 
 .header {
-  background-color: #f2f2f2;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  background-color: #6593D6; /* Nouvelle couleur de fond */
+  padding: 12px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ajout d'ombre subtile */
 }
 
 .headerContainer {
@@ -23,29 +23,35 @@
   width: 100%; 
   text-align: center; 
   text-decoration: none;
+  transition: opacity 0.2s ease; /* Animation de transition */
+}
+
+.headerTitleContainer:hover {
+  opacity: 0.9; /* Effet de survol subtil */
 }
 
 .headerTitle {
   position: absolute;
   left: 50%;
+  transform: translateX(-50%); /* Centrer correctement le titre */
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 28px;
   display: flex;
   align-items: flex-end;
-  color: #242424;
-
+  color: #ffffff; /* Texte blanc pour meilleur contraste */
 }
 
 .headerIcon {
   height: 48px;
   width: auto;
   margin-left: 36px;
+  filter: brightness(0) invert(1); /* Rendre le logo blanc si nécessaire */
 }
 
 .shareButtonContainer {
-  display: flex;
+  display: none;
   flex-direction: row;
   justify-content: center;
   margin-right: 20px;
@@ -86,15 +92,16 @@
   background: #ffffff;
   border: 1px solid #d1d1d1;
   border-radius: 4px;
+  transition: background-color 0.2s ease; /* Animation */
 }
 
 .copyButtonContainer:hover {
   cursor: pointer;
-  background: #d1d1d1;
+  background: #e6e6e6; /* Couleur plus subtile */
 }
 
 .copyButton {
-  color: #424242;
+  color: #6593D6; /* Nouvelle couleur principale */
 }
 
 .copyButtonText {
@@ -104,7 +111,18 @@
   line-height: 20px;
   display: flex;
   align-items: center;
-  color: #242424;
+  color: #6593D6; /* Nouvelle couleur principale */
+}
+
+@media (max-width: 768px) {
+  .headerTitle {
+    font-size: 22px;
+  }
+  
+  .headerIcon {
+    height: 40px;
+    margin-left: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -113,6 +131,11 @@
   }
 
   .headerIcon {
+    height: 36px;
     margin-left: 26px;
+  }
+  
+  .headerTitle {
+    font-size: 20px;
   }
 }

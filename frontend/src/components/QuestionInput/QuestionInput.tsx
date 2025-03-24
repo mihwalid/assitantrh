@@ -112,7 +112,10 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, conv
         onClick={sendQuestion}
         onKeyDown={e => (e.key === 'Enter' || e.key === ' ' ? sendQuestion() : null)}>
         {sendQuestionDisabled ? (
-          <SendRegular className={styles.questionInputSendButtonDisabled} />
+          <SendRegular 
+            className={styles.questionInputSendButtonDisabled} 
+            style={{ opacity: 0.5 }}
+          />
         ) : (
           <img src={Send} className={styles.questionInputSendButton} alt="Send Button" />
         )}

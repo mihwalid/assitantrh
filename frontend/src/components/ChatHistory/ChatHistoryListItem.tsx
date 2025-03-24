@@ -59,6 +59,7 @@ export const ChatHistoryListItemCell: React.FC<ChatHistoryListItemCellProps> = (
   const [errorRename, setErrorRename] = useState<string | undefined>(undefined)
   const [textFieldFocused, setTextFieldFocused] = useState(false)
   const textFieldRef = useRef<ITextField | null>(null)
+  const { t, i18n } = useTranslation();
 
   const appStateContext = React.useContext(AppStateContext)
   const isSelected = item?.id === appStateContext?.state.currentChat?.id
@@ -253,14 +254,14 @@ export const ChatHistoryListItemCell: React.FC<ChatHistoryListItemCellProps> = (
                 <IconButton
                   className={styles.itemButton}
                   iconProps={{ iconName: 'Delete' }}
-                  title="Delete"
+                  title={`${t("delete")}`}
                   onClick={toggleDeleteDialog}
                   onKeyDown={e => (e.key === ' ' ? toggleDeleteDialog() : null)}
                 />
                 <IconButton
                   className={styles.itemButton}
                   iconProps={{ iconName: 'Edit' }}
-                  title="Edit"
+                  title={`${t("edit")}`}
                   onClick={onEdit}
                   onKeyDown={e => (e.key === ' ' ? onEdit() : null)}
                 />

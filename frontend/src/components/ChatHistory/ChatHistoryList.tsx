@@ -14,7 +14,9 @@ export interface GroupedChatHistory {
 }
 
 const groupByMonth = (entries: Conversation[]) => {
-  const groups: GroupedChatHistory[] = [{ month: 'Recent', entries: [] }]
+  const { t, i18n } = useTranslation();
+  const groups: GroupedChatHistory[] = [{ month: t('recent'), entries: [] }]
+
   const currentDate = new Date()
 
   entries.forEach(entry => {
